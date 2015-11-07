@@ -29,32 +29,40 @@
 include_recipe 'mongodb::repo'
 
 # Install
-apt_package ['mongodb-org']  do
-  action :upgrade
+apt_package ['mongodb']  do
+  action :install
+end
+
+# Create dir
+bash 'env' do
+  code <<-EOH
+    sudo mkdir /data/db
+    EOH
+  not_if {File::exists?('/data/db')}
 end
 
 # Start
 service 'mongodb' do
-  action[:start]
+  action :start
 end
 
 # source ENV
 bash 'env' do
-  cwd ::File.dirname(src_filepath)
   code <<-EOH
     source /vagrant/vars
     EOH
-  not_if { ::File.exists?(extract_path) }
 end
 
 # Set user + password
-bash 'user' do
-  cwd ::File.dirname(src_filepath)
-  code <<-EOH
-    mongo --eval 'use webos'
-    mongo web-os --eval 'db.addUser(#{ENV['MONGO_USER']}, #{ENV['MONGO_PASS']});'
-    EOH
-  not_if { ::File.exists?(extract_path) }
-end
+# Bug reference for #26
+# Database needs better security
+# Mongo will not set username and password
+# And will not create db
+# bash 'user' do
+#   code <<-EOH
+#     mongo --eval 'use webos'
+#     mongo web-os --eval 'db.addUser(admin, admin);'
+#     EOH
+# end
 
 # Done!
