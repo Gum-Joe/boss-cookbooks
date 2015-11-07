@@ -1,2 +1,2 @@
 # Web-OS-cookbooks
-Cookbooks for Web_OS
+Cookbooks for Web-OS
