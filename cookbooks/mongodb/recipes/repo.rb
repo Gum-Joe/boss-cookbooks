@@ -28,14 +28,10 @@
 
 # Adds the repo: http://www.mongodb.org/display/DOCS/Ubuntu+and+Debian+packages
   apt_repository 'mongodb' do
-    uri "http://downloads-distro.mongodb.org/repo/#{node[:mongodb][:apt_repo]}"
+    uri "http://repo.mongodb.org/apt/ubuntu precise/mongodb-org/3.0"
     distribution 'dist'
     components ['10gen']
     keyserver 'hkp://keyserver.ubuntu.com:80'
     key '7F0CEB10'
     action :add
-  end
-
-  file '/etc/apt/sources.list.d/mongodb-org-3.0.list' do
-    content 'deb http://repo.mongodb.org/apt/ubuntu trusty/mongodb-org/3.0 multiverse'
   end
