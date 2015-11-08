@@ -27,11 +27,11 @@
 include_recipe 'nodejs::nvm'
 
 # Install nodejs version stable
+nvm = "source /home/vagrant/.nvm/nvm.sh"
 bash 'nodejs' do
   code <<-EOH
-    . /nvm/nvm.sh
-    nvm install stable
-    nvm use stable
+    #{nvm}; nvm install stable
+    #{nvm}; nvm use stable
   EOH
 end
 

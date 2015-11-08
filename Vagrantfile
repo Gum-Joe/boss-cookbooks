@@ -26,6 +26,9 @@ Vagrant.configure(2) do |config|
       # Add a recipe
       chef.add_recipe "nodejs::default"
     end
+    node.vm.provider "virtualbox" do |v|
+      v.name = "nodejs_chef_vm"
+    end
   end
 
   # Mongodb cookbook vm
@@ -37,6 +40,9 @@ Vagrant.configure(2) do |config|
       chef.cookbooks_path = "./cookbooks"
       # Add a recipe
       chef.add_recipe "mongodb::default"
+    end
+    db.vm.provider "virtualbox" do |v|
+      v.name = "mongodb_chef_vm"
     end
   end
 
