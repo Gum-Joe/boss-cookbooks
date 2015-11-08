@@ -46,21 +46,6 @@ Vagrant.configure(2) do |config|
     end
   end
 
-  # Ruby vm
-  config.vm.define "rails" do |rails|
-    rails.vm.box = "ubuntu/trusty64"
-    rails.vm.network "private_network", ip: "192.168.33.11"
-    rails.vm.provision "chef_zero" do |chef|
-      # Specify the local paths where Chef data is stored
-      chef.cookbooks_path = "./cookbooks"
-      # Add a recipe
-      chef.add_recipe "ruby::rails"
-    end
-    rails.vm.provider "virtualbox" do |v|
-      v.name = "rails_chef_vm"
-    end
-  end
-
   # Ruby vm no rails
   config.vm.define "ruby" do |ruby|
     ruby.vm.box = "ubuntu/trusty64"
@@ -73,6 +58,21 @@ Vagrant.configure(2) do |config|
     end
     ruby.vm.provider "virtualbox" do |v|
       v.name = "ruby_chef_vm"
+    end
+  end
+
+  # Rails vm
+  config.vm.define "rails" do |rails|
+    rails.vm.box = "ubuntu/trusty64"
+    rails.vm.network "private_network", ip: "192.168.33.11"
+    rails.vm.provision "chef_zero" do |chef|
+      # Specify the local paths where Chef data is stored
+      chef.cookbooks_path = "./cookbooks"
+      # Add a recipe
+      chef.add_recipe "ruby::rails"
+    end
+    rails.vm.provider "virtualbox" do |v|
+      v.name = "rails_chef_vm"
     end
   end
 

@@ -44,7 +44,6 @@ end
 # Install nvm
 bash 'install_nvm' do
   code <<-EOH
-    export NVM_DIR=/nvm
     sudo bash /download/nvm.sh
   EOH
 end
