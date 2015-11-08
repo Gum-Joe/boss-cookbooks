@@ -1,0 +1,7 @@
+name 'nodejs'
+maintainer 'Gum-Joe'
+maintainer_email 'you@example.com'
+license 'mit'
+description 'Installs/Configures nodejs'
+long_description 'Installs/Configures nodejs'
+version '0.1.0'
