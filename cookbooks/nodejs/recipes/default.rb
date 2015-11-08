@@ -26,5 +26,13 @@
 
 include_recipe 'nodejs::nvm'
 
-# Install nvm
-bash
+# Install nodejs version stable
+bash 'nodejs' do
+  code <<-EOH
+    . /nvm/nvm.sh
+    nvm install stable
+    nvm use stable
+  EOH
+end
+
+# Add a nodejs source script
