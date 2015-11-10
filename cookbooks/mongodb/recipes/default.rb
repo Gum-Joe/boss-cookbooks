@@ -36,7 +36,7 @@ end
 # Create dir
 bash 'env' do
   code <<-EOH
-    sudo mkdir /data/db
+    sudo mkdir -p /data/db
     EOH
   not_if {File::exists?('/data/db')}
 end
