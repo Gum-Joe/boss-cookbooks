@@ -1,2 +1,2 @@
-# Web-OS-cookbooks
+# Boss-cookbooks
 Cookbooks for Web-OS
