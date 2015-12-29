@@ -1,2 +1,2 @@
-# Web-OS-cookbooks
-Cookbooks for Web-OS
+# Jakhu-cookbooks
+Cookbooks for Jakhu

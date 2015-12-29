@@ -60,8 +60,8 @@ end
 # And will not create db
 # bash 'user' do
 #   code <<-EOH
-#     mongo --eval 'use webos'
-#     mongo web-os --eval 'db.addUser(admin, admin);'
+#     mongo --eval 'use Jakhu'
+#     mongo Jakhu --eval 'db.addUser(admin, admin);'
 #     EOH
 # end
 
